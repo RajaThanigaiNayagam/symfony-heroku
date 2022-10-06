@@ -2,6 +2,6 @@ index:
     path: /
     controller: App\Controller\DefaultController::index
 
-contact:
-    path: /contact
-    controller: App\Controller\DefaultController::contact
+#contact:
+#    path: /contact
+#    controller: App\Controller\DefaultController::contact
