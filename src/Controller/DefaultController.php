@@ -1,30 +1,46 @@
-<?php
+<!DOCTYPE html>
+<html>
 
-namespace App\Controller;
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		{% endblock %}
+	</head>
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">YoutubeHeroku</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Toutes les vidéos</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_home') }}#addvideo">Ajouter une vidéo</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-class DefaultController extends AbstractController  
-{
-    
-    public function index(): Response
-    {
-        return new Response('Hello world!');
-    }
+		<div class="container">
+            {% block body %}{% endblock %}
+		</div>
 
+		{% block javascripts %}
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        {% endblock %}
 
-     /**
-    * @Route("/contact", name="contact")
-    */
-    public function contact(): Response
-    {
-        return new Response('This is the contact page!!!!!');
-        #return $this->render('default/contact.html.twig', [
-        #    'title' => 'Ma page de contact<br> Testing annotation',
-        #]);
-    }
-
-
-}
+	</body>
+</html>
